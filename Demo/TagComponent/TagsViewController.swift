@@ -23,8 +23,7 @@ class TagsViewController: UIViewController, UITextFieldDelegate
     
     var cellInsets:UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
-    var tags:TagViewModelProtocol!
-    
+    var tags:TagViewModelProtocol = TagViewModel()    
 
     var directionHorizontal = false
     {
