@@ -38,6 +38,9 @@
 		B6FB8BF2225C7EF00070911E /* TagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB8BEA225C7EF00070911E /* TagsViewController.swift */; };
 		B6FB8BF3225C7EF00070911E /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB8BEC225C7EF00070911E /* TagViewModel.swift */; };
 		B6FB8BFF225C88CE0070911E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB8BFE225C88CE0070911E /* Tag.swift */; };
+		B6FB8C06225C98F20070911E /* TagViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB8C05225C98F20070911E /* TagViewModel_Tests.swift */; };
+		B6FB8C08225C99150070911E /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB8BEC225C7EF00070911E /* TagViewModel.swift */; };
+		B6FB8C09225C9AEF0070911E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB8BFE225C88CE0070911E /* Tag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,7 @@
 		B6FB8BEC225C7EF00070911E /* TagViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		B6FB8BED225C7EF00070911E /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/TagsViewController.strings; sourceTree = "<group>"; };
 		B6FB8BFE225C88CE0070911E /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		B6FB8C05225C98F20070911E /* TagViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,7 @@
 				B6A114662255FDB100E78E24 /* DemoTests.swift */,
 				B6A114682255FDB100E78E24 /* Info.plist */,
 				B6E5BF12225B9B1200E54CEF /* MasterViewModel_Tests.swift */,
+				B6FB8C05225C98F20070911E /* TagViewModel_Tests.swift */,
 			);
 			path = DemoTests;
 			sourceTree = "<group>";
@@ -377,7 +382,10 @@
 				B609CB96225B9E3B005F63A3 /* MasterViewModel.swift in Sources */,
 				B609CB92225B9D92005F63A3 /* ModelObject.swift in Sources */,
 				B6E5BF13225B9B1200E54CEF /* MasterViewModel_Tests.swift in Sources */,
+				B6FB8C09225C9AEF0070911E /* Tag.swift in Sources */,
+				B6FB8C06225C98F20070911E /* TagViewModel_Tests.swift in Sources */,
 				B6A114672255FDB100E78E24 /* DemoTests.swift in Sources */,
+				B6FB8C08225C99150070911E /* TagViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

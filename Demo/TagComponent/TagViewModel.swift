@@ -15,13 +15,13 @@ protocol TagViewModelDelegate: class {
 }
 
 protocol TagViewModelProtocol
-{
-    var allRemovableTags:Bool {get set}
-    var allNonRemovableTags:Bool {get set}
+{    
     var multiSelect:Bool {set get}
     var mustHaveOneSelection:Bool {set get}
-    var data:[Tag] { get }
     
+    var count:Int {get}
+    func at(_ index:Int) -> Tag?
+    var data:[Tag] {get}
     func selectFromTags(tags:[Tag])
     func addTag(tag:Tag)
     func remove(tag tagData:Tag ) -> Int?
@@ -31,6 +31,7 @@ protocol TagViewModelProtocol
 
 class TagViewModel: NSObject, TagViewModelProtocol
 {
+    
     weak var delegate:TagViewModelDelegate?
     var multiSelect = true
     var mustHaveOneSelection = false
@@ -49,33 +50,6 @@ class TagViewModel: NSObject, TagViewModelProtocol
     }
     
     private var _data:[Tag] = []
-    
-    private var _allRemovableTags = false
-    var allRemovableTags:Bool
-    {
-        set
-        {
-            _allRemovableTags = newValue
-            _allNonRemovableTags = !_allRemovableTags
-        }
-        get
-        {
-            return _allRemovableTags
-        }
-    }
-    private var _allNonRemovableTags = false
-    var allNonRemovableTags:Bool
-    {
-        set
-        {
-            _allNonRemovableTags = newValue
-            _allRemovableTags = !_allNonRemovableTags
-        }
-        get
-        {
-            return _allNonRemovableTags
-        }
-    }
     
     func selectFromTags(tags:[Tag])
     {
@@ -108,6 +82,26 @@ class TagViewModel: NSObject, TagViewModelProtocol
         }
     }
     
+    var count: Int
+    {
+        get
+        {
+            return _data.count
+        }
+    }
+    
+    func at(_ index:Int) -> Tag?
+    {
+        if _data.count > index
+        {
+            return _data[index]
+        }
+        else
+        {
+            return nil
+        }
+    }
+    
     func clearAllTags()
     {
         _data.removeAll()
@@ -118,7 +112,12 @@ class TagViewModel: NSObject, TagViewModelProtocol
     {
         let d = self.delegate
         self.delegate = nil
-        self.data = data
+        _data = data
+        for (i,_) in _data.enumerated()
+        {
+            _data[i].orderNumber = i + 1
+        }
+        
         self.delegate = d
         
     }
@@ -138,14 +137,14 @@ class TagViewModel: NSObject, TagViewModelProtocol
     func addTag(tag:Tag)
     {
         var t = tag
-        let pos = data.count
+        let pos = _data.count
         //        if category != nil
         //        {
         //            t.category = category!
         //        }
         
         //does tag already exist?
-        let index = data.index(where: {$0.name.lowercased() == t.name.lowercased()})
+        let index = _data.index(where: {$0.name.lowercased() == t.name.lowercased()})
         if index  == nil
         { //no
             
@@ -161,16 +160,16 @@ class TagViewModel: NSObject, TagViewModelProtocol
         else
         {
             //yes, then just select it
-            if !data[index!].selected
+            if !_data[index!].selected
             {
-                didSelect(tag: data[index!])
+                didSelect(tag: _data[index!])
             }
         }
     }
     
     func unselectAllTags()
     {
-        for i in 0..<data.count
+        for i in 0..<_data.count
         {
             if mustHaveOneSelection == true && selectedTags().count == 1
             {
@@ -184,7 +183,7 @@ class TagViewModel: NSObject, TagViewModelProtocol
     func selectedTags () -> [Tag]
     {
         var res:[Tag] = []
-        for i in 0..<data.count
+        for i in 0..<_data.count
         {
             let t = data[i]
             if(t.selected)
@@ -197,22 +196,22 @@ class TagViewModel: NSObject, TagViewModelProtocol
     
     func didSelect(tag:Tag)
     {
-        if let index = data.index( where: { (t) -> Bool in
+        if let index = _data.index( where: { (t) -> Bool in
             t.name ==  tag.name
         })
         {
-            if !(mustHaveOneSelection && data[index].selected && selectedTags().count < 2)
+            if !(mustHaveOneSelection && _data[index].selected && selectedTags().count < 2)
             {
-                if (!data[index].selected && multiSelect == false)
+                if (!_data[index].selected && multiSelect == false)
                 {
-                    for i in 0..<data.count
+                    for i in 0..<_data.count
                     {
-                        data[i].selected = false
+                        _data[i].selected = false
                     }
                 }
                 
-                let wasSelected = data[index].selected
-                data[index].selected = !(data[index].selected)
+                let wasSelected = _data[index].selected
+                data[index].selected = !(_data[index].selected)
 
             }
         }

@@ -11,7 +11,7 @@
 import UIKit
 
 protocol TagsCollectionViewDelegate: class {
-    func dataSetChanged(_ tagController: TagsViewController, newDataSet: [Tag]?)
+    func dataSetChanged(_ tagController: TagsViewController, newDataSet: TagViewModelProtocol?)
 }
 
 class TagsViewController: UIViewController, UITextFieldDelegate
@@ -23,7 +23,34 @@ class TagsViewController: UIViewController, UITextFieldDelegate
     
     var cellInsets:UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
-    var tags:TagViewModelProtocol = TagViewModel()    
+    private var _allRemovableTags = false
+    var allRemovableTags:Bool
+    {
+        set
+        {
+            _allRemovableTags = newValue
+            _allNonRemovableTags = !_allRemovableTags
+        }
+        get
+        {
+            return _allRemovableTags
+        }
+    }
+    private var _allNonRemovableTags = false
+    var allNonRemovableTags:Bool
+    {
+        set
+        {
+            _allNonRemovableTags = newValue
+            _allRemovableTags = !_allNonRemovableTags
+        }
+        get
+        {
+            return _allNonRemovableTags
+        }
+    }
+    
+    var tags:TagViewModelProtocol = TagViewModel()
 
     var directionHorizontal = false
     {
@@ -101,7 +128,7 @@ class TagsViewController: UIViewController, UITextFieldDelegate
     func dataSetChanged(_ tagController: TagViewModelDelegate)
     {
         collectionView.reloadData()
-        delegate?.dataSetChanged(self,newDataSet: tags.data)
+        delegate?.dataSetChanged(self,newDataSet: tags)
         view.setNeedsLayout()
     }
     
@@ -208,7 +235,7 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         let i = IndexPath(item: atIndex, section: 0)
         collectionView.insertItems(at: [i])
         
-        delegate?.dataSetChanged(self,newDataSet: tags.data)
+        delegate?.dataSetChanged(self,newDataSet: tags)
     }
     
     @IBAction func pressedAdd(_ sender: Any)
@@ -223,14 +250,14 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         
         tags.unselectAllTags()
         collectionView.reloadData()
-        delegate?.dataSetChanged(self,newDataSet: tags.data)
+        delegate?.dataSetChanged(self,newDataSet: tags)
     }
     
     
     func didSelect(tag:Tag,atIndex:Int)
     {
         collectionView.reloadItems(at: [IndexPath(row: atIndex, section: 0)])
-        delegate?.dataSetChanged(self,newDataSet:tags.data)
+        delegate?.dataSetChanged(self,newDataSet:tags)
     }
 }
 
@@ -239,13 +266,13 @@ class TagsViewController: UIViewController, UITextFieldDelegate
 extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tags.data.count
+        return tags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TagsCollectionViewCell.self), for: indexPath) as! TagsCollectionViewCell
         
-        cell.tagData = tags.data[indexPath.row]
+        cell.tagData = tags.at(indexPath.row)
         
         cell.clearMethod =
         { [weak self] tagData in
@@ -256,12 +283,12 @@ extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelega
                 self?.view.setNeedsLayout()
                 if self != nil
                 {
-                    self!.delegate?.dataSetChanged(self!,newDataSet: self!.tags.data)
+                    self!.delegate?.dataSetChanged(self!,newDataSet: self!.tags)
                 }
             }
         }
         
-        if tags.allRemovableTags {
+        if allRemovableTags {
             cell.forceShowDeleteButton = true
             cell.selectMethod = cell.clearMethod
         } else {
@@ -272,7 +299,7 @@ extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
         }
         
-        if tags.allNonRemovableTags {
+        if allNonRemovableTags {
             cell.forceDoNotShowDeleteButton = true
             cell.clearMethod = nil
             cell.selectMethod =
@@ -288,12 +315,12 @@ extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let tag = tags.data[indexPath.row]
+        let tag = tags.at(indexPath.row)!
         let myString: String = tag.name
         var size: CGSize = myString.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)])
         size.width+=24 + cellInsets.left + cellInsets.right
         
-        if (tags.allRemovableTags || (tag.optional && !tags.allNonRemovableTags) )
+        if (allRemovableTags || (tag.optional && !allNonRemovableTags) )
         {
             size.width += 30
         }
