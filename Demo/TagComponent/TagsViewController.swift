@@ -16,6 +16,7 @@ protocol TagsCollectionViewDelegate: class {
 
 class TagsViewController: UIViewController, UITextFieldDelegate
 {
+    
     @IBOutlet weak var addNewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var buttonAdd: UIButton!
@@ -107,6 +108,7 @@ class TagsViewController: UIViewController, UITextFieldDelegate
             
         setDirection()
         
+        tags.delegate = self
         textAddNew.delegate = self
         originalAddNewBarHeight = viewAddnew.bounds.size.height
         collectionView.reloadData()
@@ -123,13 +125,6 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         buttonAdd.layer.cornerRadius = 5
 //        let l = TagCellLayout(alignment: .center, delegate: self)
 //        collectionView.collectionViewLayout = l
-    }
-    
-    func dataSetChanged(_ tagController: TagViewModelDelegate)
-    {
-        collectionView.reloadData()
-        delegate?.dataSetChanged(self,newDataSet: tags)
-        view.setNeedsLayout()
     }
     
     func resizeForAddNewBarChange()
@@ -230,14 +225,6 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         view.setNeedsLayout()
     }
     
-    func didAddTag(tag:Tag,atIndex:Int)
-    {
-        let i = IndexPath(item: atIndex, section: 0)
-        collectionView.insertItems(at: [i])
-        
-        delegate?.dataSetChanged(self,newDataSet: tags)
-    }
-    
     @IBAction func pressedAdd(_ sender: Any)
     {
         textAddNew.resignFirstResponder()
@@ -253,12 +240,6 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         delegate?.dataSetChanged(self,newDataSet: tags)
     }
     
-    
-    func didSelect(tag:Tag,atIndex:Int)
-    {
-        collectionView.reloadItems(at: [IndexPath(row: atIndex, section: 0)])
-        delegate?.dataSetChanged(self,newDataSet:tags)
-    }
 }
 
 
@@ -277,15 +258,7 @@ extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.clearMethod =
         { [weak self] tagData in
                 
-            if let index = self?.tags.remove(tag:tagData)
-            {
-                self?.collectionView.deleteItems(at: [IndexPath(row: index, section: 0)])
-                self?.view.setNeedsLayout()
-                if self != nil
-                {
-                    self!.delegate?.dataSetChanged(self!,newDataSet: self!.tags)
-                }
-            }
+            self?.tags.remove(tag:tagData)
         }
         
         if allRemovableTags {
@@ -295,7 +268,7 @@ extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.selectMethod =
             {
                 [weak self] tagData in
-                self?.tags.selectFromTags(tags: [tagData])
+                self?.tags.changeSelection(tag:tagData)
             }
         }
         
@@ -305,7 +278,7 @@ extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.selectMethod =
             {
                 [weak self] tagData in
-                self?.tags.selectFromTags(tags: [tagData])
+                self?.tags.changeSelection(tag:tagData)
             }
         }
         
@@ -327,5 +300,37 @@ extension TagsViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         return CGSize(width:(size.width), height: 35 + cellInsets.top + cellInsets.bottom);
     }
+}
+
+
+extension TagsViewController : TagViewModelDelegate
+{
+    func didChangeSelection(tag:Tag,atIndex:Int)
+    {
+        collectionView.reloadItems(at: [IndexPath(row: atIndex, section: 0)])
+        view.setNeedsLayout()
+        delegate?.dataSetChanged(self,newDataSet:tags)
+    }
     
+    func didAddTag(tag:Tag,atIndex:Int)
+    {
+        let i = IndexPath(item: atIndex, section: 0)
+        collectionView.insertItems(at: [i])
+        view.setNeedsLayout()
+        delegate?.dataSetChanged(self,newDataSet: tags)
+    }
+    
+    func didRemoveTag(tag:Tag,atIndex:Int)
+    {
+        self.collectionView.deleteItems(at: [IndexPath(row: atIndex, section: 0)])
+        self.view.setNeedsLayout()
+        self.delegate?.dataSetChanged(self,newDataSet: tags)
+    }
+    
+    func dataSetChanged(_ tagController: TagViewModelProtocol)
+    {
+        collectionView.reloadData()
+        view.setNeedsLayout()
+        delegate?.dataSetChanged(self,newDataSet: tags)        
+    }
 }

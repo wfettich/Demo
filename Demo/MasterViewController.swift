@@ -27,6 +27,10 @@ class MasterViewController: UITableViewController {
         }
         
         tableView.register(UINib(nibName: String(describing: MasterTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MasterTableViewCell.self))
+        
+        
+        insertNewObject(addButton)
+        insertNewObject(addButton)
     }
 
     override func viewWillAppear(_ animated: Bool) {

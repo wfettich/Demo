@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailContentViewController: UITableViewController
+class DetailContentViewController: UITableViewController, TagsCollectionViewDelegate
 {
     @IBOutlet weak var viewContent1: ContentView1!
 
@@ -27,7 +27,7 @@ class DetailContentViewController: UITableViewController
         super.viewDidLoad()
         
         tagsVC.addTagComponentToContainerView(containerView: viewTags)
-        
+        tagsVC.delegate = self
         tagsVC.tags.setDataWithoutCallingDelegate([
             Tag(name:"lalala    ",value:"1",category:"test",selected:false,optional:false ),
             Tag(name:"mumu   ",value:"2",category:"test",selected:false,optional:true ),
@@ -36,6 +36,8 @@ class DetailContentViewController: UITableViewController
             Tag(name:"dododa",value:"5",category:"test",selected:false,optional:false )
             ])
         
+        tableView.beginUpdates()
+        tableView.endUpdates()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,6 +45,14 @@ class DetailContentViewController: UITableViewController
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func dataSetChanged(_ tagController: TagsViewController, newDataSet: TagViewModelProtocol?)
+    {
+        view.setNeedsLayout()
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
 
     // MARK: - Table view data source
 

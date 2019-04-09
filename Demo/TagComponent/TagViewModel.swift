@@ -10,29 +10,33 @@ import UIKit
 
 protocol TagViewModelDelegate: class {
     func dataSetChanged(_ tagController: TagViewModelProtocol)
-    func didSelect(tag:Tag,atIndex:Int)
+    func didChangeSelection(tag:Tag,atIndex:Int)
     func didAddTag(tag:Tag,atIndex:Int)
+    func didRemoveTag(tag:Tag,atIndex:Int)
 }
 
 protocol TagViewModelProtocol
-{    
+{
+    weak var delegate:TagViewModelDelegate? {set get}
+    
     var multiSelect:Bool {set get}
     var mustHaveOneSelection:Bool {set get}
-    
     var count:Int {get}
-    func at(_ index:Int) -> Tag?
     var data:[Tag] {get}
-    func selectFromTags(tags:[Tag])
+    
+    func at(_ index:Int) -> Tag?
+    func setSelected(tags:[Tag])
     func addTag(tag:Tag)
-    func remove(tag tagData:Tag ) -> Int?
+    func remove(tag tagData:Tag )
     func setDataWithoutCallingDelegate(_ data:[Tag] )
     func unselectAllTags()
+    func changeSelection(tag:Tag)
 }
 
 class TagViewModel: NSObject, TagViewModelProtocol
 {
     
-    weak var delegate:TagViewModelDelegate?
+    weak var delegate:TagViewModelDelegate? 
     var multiSelect = true
     var mustHaveOneSelection = false
     var data:[Tag]
@@ -51,7 +55,7 @@ class TagViewModel: NSObject, TagViewModelProtocol
     
     private var _data:[Tag] = []
     
-    func selectFromTags(tags:[Tag])
+    func setSelected(tags:[Tag])
     {
         let selectedPrices = tags.compactMap { (tag) -> String? in
             return tag.category == self.category ? tag.value : nil
@@ -59,13 +63,15 @@ class TagViewModel: NSObject, TagViewModelProtocol
         
         for i in 0..<data.count
         {
-            data[i].selected = selectedPrices.contains(data[i].value)
+            _data[i].selected = selectedPrices.contains(data[i].value)
+            delegate?.didChangeSelection(tag: _data[i], atIndex: i)
         }
+        delegate?.dataSetChanged(self)
         
         if (self.mustHaveOneSelection && selectedTags().count == 0
             && data.count > 0)
         {
-            didSelect(tag: data.first!)
+            changeSelection(tag: data.first!)
         }
     }
     
@@ -122,16 +128,16 @@ class TagViewModel: NSObject, TagViewModelProtocol
         
     }
     
-    func remove(tag tagData:Tag ) -> Int?
+    func remove(tag tagData:Tag )
     {
         if let index = _data.index( where: { (tag) -> Bool in
             tag.name ==  tagData.name
             })
         {
+            let t = _data[index]
             _data.remove(at: index)
-            return index
+            delegate?.didRemoveTag(tag: t, atIndex: index)
         }
-        return nil
     }
     
     func addTag(tag:Tag)
@@ -162,7 +168,7 @@ class TagViewModel: NSObject, TagViewModelProtocol
             //yes, then just select it
             if !_data[index!].selected
             {
-                didSelect(tag: _data[index!])
+                changeSelection(tag: _data[index!])
             }
         }
     }
@@ -194,7 +200,7 @@ class TagViewModel: NSObject, TagViewModelProtocol
         return res
     }
     
-    func didSelect(tag:Tag)
+    func changeSelection(tag:Tag)
     {
         if let index = _data.index( where: { (t) -> Bool in
             t.name ==  tag.name
@@ -211,7 +217,9 @@ class TagViewModel: NSObject, TagViewModelProtocol
                 }
                 
                 let wasSelected = _data[index].selected
-                data[index].selected = !(_data[index].selected)
+                _data[index].selected = !(_data[index].selected)
+                delegate?.didChangeSelection(tag: data[index], atIndex: index)
+                delegate?.dataSetChanged(self)
 
             }
         }
