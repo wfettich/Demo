@@ -18,9 +18,24 @@ class DetailContentViewController: UITableViewController
         }
     }
     
+    @IBOutlet weak var viewTags: UIView!
     
-    override func viewDidLoad() {
+    let tagsVC = TagsViewController()
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+        tagsVC.addTagComponentToContainerView(containerView: viewTags)
+        
+        tagsVC.tags.setDataWithoutCallingDelegate([
+            Tag(name:"lalala    ",value:"1",category:"test",selected:false,optional:false ),
+            Tag(name:"mumu   ",value:"2",category:"test",selected:false,optional:true ),
+            Tag(name:"cucu  ",value:"3",category:"test",selected:true,optional:true ),
+            Tag(name:"baba ",value:"4",category:"test",selected:false,optional:false ),
+            Tag(name:"dododa",value:"5",category:"test",selected:false,optional:false )
+            ])
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
