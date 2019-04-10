@@ -1,0 +1,3 @@
+[submodule "TagComponent"]
+	path = TagComponent
+	url = https://bitbucket.org/digitalpomelocode/tagcomponent.git
