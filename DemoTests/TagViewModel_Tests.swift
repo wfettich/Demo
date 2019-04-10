@@ -13,6 +13,7 @@ class TagDelegateReceiver:TagViewModelDelegate
     var didCall_dataSetChanged:[Bool] = []
     var didCall_didSelect :[(Tag,Int)] = []
     var didCall_didAddTag :[(Tag,Int)] = []
+    var didCall_didRemoveTag :[(Tag,Int)] = []
     
     func dataSetChanged(_ tagController: TagViewModelProtocol)
     {
@@ -26,6 +27,10 @@ class TagDelegateReceiver:TagViewModelDelegate
     func didAddTag(tag:Tag,atIndex:Int)
     {
         didCall_didAddTag.append((tag,atIndex))
+    }
+    func didRemoveTag(tag: Tag, atIndex: Int)
+    {
+        didCall_didRemoveTag.append((tag,atIndex))
     }
 }
 
@@ -83,7 +88,7 @@ class TagViewModel_Tests: XCTestCase {
         XCTAssert(tags.count == 2)
         XCTAssertFalse(tags.data.contains(t2))
         XCTAssert(tags.at(1) == t3)
-        XCTAssert(tagsDelegate.didCall_dataSetChanged.count == 1)
+        XCTAssert(tagsDelegate.didCall_didRemoveTag.count == 1)
     }
     
     func test_Add_Existing_Tag()
@@ -140,8 +145,8 @@ class TagViewModel_Tests: XCTestCase {
     {
         tags.multiSelect = true
         let t = Tag(name:"one",value:"1",category:"test",selected:false,optional:false )
-        let t2 = Tag(name:"two",value:"2",category:"test",selected:false,optional:false )
-        let t3 = Tag(name:"three",value:"3",category:"test",selected:false,optional:false )
+        let t2 = Tag(name:"two",value:"2",category:"test",selected:true,optional:false )
+        let t3 = Tag(name:"three",value:"3",category:"test",selected:true,optional:false )
         let t4 = Tag(name:"four",value:"4",category:"test",selected:false,optional:false )
         tags.setDataWithoutCallingDelegate([t,t2,t3,t4])
         XCTAssert(tags.count == 4)
@@ -174,10 +179,46 @@ class TagViewModel_Tests: XCTestCase {
         XCTAssertFalse(tags.selectedTags().count == 1)
     }
     
+    func test_clear()
+    {
+        let t = Tag(name:"one",value:"1",category:"test",selected:false,optional:false )
+        let t2 = Tag(name:"two",value:"2",category:"test",selected:false,optional:false )
+        let t3 = Tag(name:"three",value:"3",category:"test",selected:false,optional:false )
+        let t4 = Tag(name:"four",value:"4",category:"test",selected:false,optional:false )
+        tags.setDataWithoutCallingDelegate([t,t2,t3,t4])
+        XCTAssert(tags.count == 4)
+        
+        tags.clear()
+        XCTAssert(tags.count == 0)
+        XCTAssert(tagsDelegate.didCall_dataSetChanged.count == 1)
+        
+    }
     
     func test_setCategory()
     {
+        //if a tagcollection has a category then when selecting tags, they should only be from that category. But the category will not be changed for a tag added to it.
         
+        tags.category = "test"
+        let t = Tag(name:"one",value:"1",category:"test",selected:false,optional:false )
+        let t2 = Tag(name:"two",value:"2",category:"test",selected:true,optional:false )
+        let t_another_category = Tag(name:"three",value:"3",category:"different",selected:false,optional:false )
+        let t_no_category = Tag(name:"four",value:"4",selected:false,optional:false )
+        tags.setDataWithoutCallingDelegate([t,t2,t_another_category,t_no_category])
+        
+        tags.category = "test"
+        tags.setSelected(tags: [t,t2,t_another_category,t_no_category])
+        let s = tags.selectedTags()
+        XCTAssert(s.contains(t))
+        XCTAssert(s.contains(t2))
+        XCTAssertFalse(s.contains(t_another_category))
+        XCTAssertFalse(s.contains(t_no_category))
+        
+        XCTAssert(tagsDelegate.didCall_dataSetChanged.count >= 1)
+        XCTAssert(tagsDelegate.didCall_didSelect.count >= 1)
+        
+        tags.unselectAllTags()
+        let s2 = tags.selectedTags()
+        XCTAssert(s2.count == 0)
     }
     
     

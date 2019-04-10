@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TagsViewController" customModule="Wikoti_AdHoc" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TagsViewController" customModule="Demo" customModuleProvider="target">
             <connections>
                 <outlet property="addNewHeight" destination="kbe-ZQ-0bU" id="1ne-89-YZW"/>
                 <outlet property="buttonAdd" destination="mnV-2r-beZ" id="gsH-Rq-dbp"/>

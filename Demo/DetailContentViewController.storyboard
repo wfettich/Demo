@@ -78,10 +78,25 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="sG6-TB-1b6">
                                         <rect key="frame" x="0.0" y="188" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sG6-TB-1b6" id="H32-bV-F0q">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sG6-TB-1b6" id="H32-bV-F0q">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXa-sA-STy">
+                                                    <rect key="frame" x="0.0" y="30.5" width="320" height="35"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="p5T-rA-69f"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="nXa-sA-STy" secondAttribute="trailing" id="3uu-Pa-zaa"/>
+                                                <constraint firstAttribute="bottom" secondItem="nXa-sA-STy" secondAttribute="bottom" constant="30" id="62i-sI-mvR"/>
+                                                <constraint firstItem="nXa-sA-STy" firstAttribute="leading" secondItem="H32-bV-F0q" secondAttribute="leading" id="IDU-Yh-XjK"/>
+                                                <constraint firstItem="nXa-sA-STy" firstAttribute="top" secondItem="H32-bV-F0q" secondAttribute="top" constant="30" id="jhi-Gs-ZGJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -95,6 +110,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="viewContent1" destination="me9-rI-DpE" id="Egz-zL-LaO"/>
+                        <outlet property="viewTagBar" destination="nXa-sA-STy" id="1hl-tM-6pQ"/>
                         <outlet property="viewTags" destination="LUB-tK-4n8" id="EbZ-A1-bay"/>
                     </connections>
                 </tableViewController>

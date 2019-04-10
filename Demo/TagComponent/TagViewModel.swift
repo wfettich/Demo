@@ -23,6 +23,7 @@ protocol TagViewModelProtocol
     var mustHaveOneSelection:Bool {set get}
     var count:Int {get}
     var data:[Tag] {get}
+    var category:String? {set get}
     
     func at(_ index:Int) -> Tag?
     func setSelected(tags:[Tag])
@@ -31,6 +32,9 @@ protocol TagViewModelProtocol
     func setDataWithoutCallingDelegate(_ data:[Tag] )
     func unselectAllTags()
     func changeSelection(tag:Tag)
+    func selectedTags () -> [Tag]
+    func clear()
+    
 }
 
 class TagViewModel: NSObject, TagViewModelProtocol
@@ -57,18 +61,18 @@ class TagViewModel: NSObject, TagViewModelProtocol
     
     func setSelected(tags:[Tag])
     {
-        let selectedPrices = tags.compactMap { (tag) -> String? in
-            return tag.category == self.category ? tag.value : nil
+        let selectedTags = tags.compactMap { (tag) -> String? in
+            return (self.category == nil || tag.category == self.category) ? tag.value : nil
         }
         
         for i in 0..<data.count
         {
-            _data[i].selected = selectedPrices.contains(data[i].value)
+            _data[i].selected = selectedTags.contains(data[i].value)
             delegate?.didChangeSelection(tag: _data[i], atIndex: i)
         }
         delegate?.dataSetChanged(self)
         
-        if (self.mustHaveOneSelection && selectedTags().count == 0
+        if (self.mustHaveOneSelection && self.selectedTags().count == 0
             && data.count > 0)
         {
             changeSelection(tag: data.first!)
@@ -108,7 +112,7 @@ class TagViewModel: NSObject, TagViewModelProtocol
         }
     }
     
-    func clearAllTags()
+    func clear()
     {
         _data.removeAll()
         delegate?.dataSetChanged(self)

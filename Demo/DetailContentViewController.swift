@@ -18,7 +18,11 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
         }
     }
     
+    @IBOutlet weak var viewTagBar: UIView!
+    
     @IBOutlet weak var viewTags: UIView!
+    
+    let tagBarVC = TagsViewController()
     
     let tagsVC = TagsViewController()
     
@@ -26,7 +30,7 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
     {
         super.viewDidLoad()
         
-        tagsVC.addTagComponentToContainerView(containerView: viewTags)
+        tagsVC.addTagComponentToContainerView(parentVC: self,containerView: viewTags)
         tagsVC.delegate = self
         tagsVC.tags.setDataWithoutCallingDelegate([
             Tag(name:"lalala    ",value:"1",category:"test",selected:false,optional:false ),
@@ -35,10 +39,19 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
             Tag(name:"baba ",value:"4",category:"test",selected:false,optional:false ),
             Tag(name:"dododa",value:"5",category:"test",selected:false,optional:false )
             ])
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
+                
+        tagBarVC.addTagComponentToContainerView(parentVC: self,containerView: viewTagBar)
+        tagBarVC.directionHorizontal = true
+        tagBarVC.delegate = self
+        tagBarVC.tags.setDataWithoutCallingDelegate([
+            Tag(name:"bar",value:"b1",category:"tagBar",selected:false,optional:false ),
+            Tag(name:"cafe",value:"b2",category:"tagBar",selected:false,optional:true ),
+            Tag(name:"cucu",value:"b3",category:"tagBar",selected:true,optional:true ),
+            Tag(name:"baba ",value:"b4",category:"tagBar",selected:false,optional:false ),
+            Tag(name:"dododa",value:"b5",category:"tagBar",selected:false,optional:false )
+            ])
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

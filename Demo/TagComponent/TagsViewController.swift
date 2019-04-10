@@ -78,6 +78,7 @@ class TagsViewController: UIViewController, UITextFieldDelegate
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 0
             collectionView!.collectionViewLayout = layout
+            showAddNewBar = false
         }
     }
     
@@ -166,19 +167,16 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         collectionView.reloadData()
     }
     
-    func addTagComponentToContainerView(parentVC: UIViewController? = nil, containerView: UIView) {
+    func addTagComponentToContainerView(parentVC: UIViewController, containerView: UIView)
+    {
         
         self.view.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(view)
         
-        //        self.view = containerView
-        if let parentVC = parentVC
-        {
-            parentVC.addChild(self)
+        parentVC.addChild(self)
             
-            self.didMove(toParent: parentVC)
-        }
-        
+        self.didMove(toParent: parentVC)
+                
         let containerViewLeadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal
             , toItem: containerView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
         
