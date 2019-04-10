@@ -69,6 +69,7 @@ class TagsViewController: UIViewController, UITextFieldDelegate
             layout.scrollDirection = .vertical
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 0
+            collectionView.isScrollEnabled = false
             collectionView!.collectionViewLayout = layout
         }
         else
@@ -114,7 +115,6 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         originalAddNewBarHeight = viewAddnew.bounds.size.height
         collectionView.reloadData()
         
-
         let iconFilter = #imageLiteral(resourceName: "filter_icon").withRenderingMode(.alwaysTemplate)
         let iconFilterView = UIImageView(image: iconFilter)
         iconFilterView.contentMode = .scaleAspectFit
@@ -141,24 +141,26 @@ class TagsViewController: UIViewController, UITextFieldDelegate
             viewAddnew.isHidden = false
         }
         view.setNeedsUpdateConstraints()
-        
-        collectionView.sizeToFit()
-        collectionView.reloadData()
-        view.sizeToFit()
-        view.superview?.sizeToFit()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
         
         resizeForAddNewBarChange()
+        
+        collectionView.layoutIfNeeded()
+        collectionView.sizeToFit()
         
         let height = collectionView.collectionViewLayout.collectionViewContentSize.height
         heightConstraint.constant = height
         
-        self.view.setNeedsUpdateConstraints()
-        self.view.setNeedsLayout()
+        collectionView.updateConstraints()
+        collectionView.layoutIfNeeded()
         
-        super.viewDidLayoutSubviews()
+        view.layoutIfNeeded()
+        
+        delegate?.dataSetChanged(self, newDataSet: tags)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -219,8 +221,6 @@ class TagsViewController: UIViewController, UITextFieldDelegate
         tags.addTag(tag: tag)
         
         textAddNew.text = nil
-        
-        view.setNeedsLayout()
     }
     
     @IBAction func pressedAdd(_ sender: Any)
@@ -329,6 +329,6 @@ extension TagsViewController : TagViewModelDelegate
     {
         collectionView.reloadData()
         view.setNeedsLayout()
-        delegate?.dataSetChanged(self,newDataSet: tags)        
+        delegate?.dataSetChanged(self,newDataSet: tags)
     }
 }

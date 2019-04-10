@@ -29,7 +29,7 @@ protocol TagViewModelProtocol
     func setSelected(tags:[Tag])
     func addTag(tag:Tag)
     func remove(tag tagData:Tag )
-    func setDataWithoutCallingDelegate(_ data:[Tag] )
+    func setData(_ data:[Tag] )
     func unselectAllTags()
     func changeSelection(tag:Tag)
     func selectedTags () -> [Tag]
@@ -118,17 +118,18 @@ class TagViewModel: NSObject, TagViewModelProtocol
         delegate?.dataSetChanged(self)
     }
     
-    func setDataWithoutCallingDelegate(_ data:[Tag] )
+    func setData(_ data:[Tag] )
     {
-        let d = self.delegate
-        self.delegate = nil
+//        let d = self.delegate
+//        self.delegate = nil
         _data = data
         for (i,_) in _data.enumerated()
         {
             _data[i].orderNumber = i + 1
         }
-        
-        self.delegate = d
+  
+        self.delegate?.dataSetChanged(self)
+//        self.delegate = d
         
     }
     
