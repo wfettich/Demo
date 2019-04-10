@@ -32,7 +32,7 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
         
         tagsVC.addTagComponentToContainerView(parentVC: self,containerView: viewTags)
         tagsVC.delegate = self
-        tagsVC.tags.setData([
+        tagsVC.tags.setDataWithoutCallingDelegate([
             Tag(name:"lalala    ",value:"1",category:"test",selected:false,optional:false ),
             Tag(name:"mumu   ",value:"2",category:"test",selected:false,optional:true ),
             Tag(name:"cucu  ",value:"3",category:"test",selected:true,optional:true ),
@@ -43,7 +43,7 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
         tagBarVC.addTagComponentToContainerView(parentVC: self,containerView: viewTagBar)
         tagBarVC.directionHorizontal = true
         tagBarVC.delegate = self
-        tagBarVC.tags.setData([
+        tagBarVC.tags.setDataWithoutCallingDelegate([
             Tag(name:"bar",value:"b1",category:"tagBar",selected:false,optional:false ),
             Tag(name:"cafe",value:"b2",category:"tagBar",selected:false,optional:true ),
             Tag(name:"cucu",value:"b3",category:"tagBar",selected:true,optional:true ),

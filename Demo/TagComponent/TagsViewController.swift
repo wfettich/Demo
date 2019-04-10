@@ -68,8 +68,7 @@ class TagsViewController: UIViewController, UITextFieldDelegate
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 0
-            collectionView.isScrollEnabled = false
+            layout.minimumLineSpacing = 0            
             collectionView!.collectionViewLayout = layout
         }
         else

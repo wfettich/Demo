@@ -188,7 +188,6 @@
 				B6A114662255FDB100E78E24 /* DemoTests.swift */,
 				B6A114682255FDB100E78E24 /* Info.plist */,
 				B6E5BF12225B9B1200E54CEF /* MasterViewModel_Tests.swift */,
-				B6FB8C05225C98F20070911E /* TagViewModel_Tests.swift */,
 			);
 			path = DemoTests;
 			sourceTree = "<group>";
@@ -202,9 +201,18 @@
 			path = DemoUITests;
 			sourceTree = "<group>";
 		};
+		B6B6B78A225E334E0020D129 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B6FB8C05225C98F20070911E /* TagViewModel_Tests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		B6FB8BE3225C7EF00070911E /* TagComponent */ = {
 			isa = PBXGroup;
 			children = (
+				B6B6B78A225E334E0020D129 /* Tests */,
 				B6FB8BFE225C88CE0070911E /* Tag.swift */,
 				B6FB8BE4225C7EF00070911E /* TagsViewController.strings */,
 				B6FB8BE6225C7EF00070911E /* TagsCollectionViewCell.swift */,
