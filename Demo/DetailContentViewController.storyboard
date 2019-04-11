@@ -28,6 +28,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -53,6 +56,9 @@
                                                 <constraint firstItem="me9-rI-DpE" firstAttribute="top" secondItem="8kp-ID-The" secondAttribute="top" id="u01-1a-Kfi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GoL-Fl-8C1">
                                         <rect key="frame" x="0.0" y="144" width="320" height="44"/>

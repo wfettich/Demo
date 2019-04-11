@@ -85,6 +85,8 @@ class MasterViewController: UITableViewController {
         
         tableView.beginUpdates()
         cell.modelObject = object
+        cell.accessibilityIdentifier = "cell \(indexPath.row)"
+        
         tableView.endUpdates()
         return cell
     }

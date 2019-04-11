@@ -39,6 +39,7 @@
 		B6B6B807225E4BB50020D129 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6B7FE225E4BB50020D129 /* Tag.swift */; };
 		B6B6B808225E4BBF0020D129 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6B7FE225E4BB50020D129 /* Tag.swift */; };
 		B6B6B809225E4BC50020D129 /* TagViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6B7F7225E4BB50020D129 /* TagViewModel_Tests.swift */; };
+		B6D70B30225F890A00738A7E /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6B7FD225E4BB50020D129 /* TagViewModel.swift */; };
 		B6E5BF13225B9B1200E54CEF /* MasterViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E5BF12225B9B1200E54CEF /* MasterViewModel_Tests.swift */; };
 /* End PBXBuildFile section */
 
@@ -389,6 +390,7 @@
 			files = (
 				B609CB96225B9E3B005F63A3 /* MasterViewModel.swift in Sources */,
 				B609CB92225B9D92005F63A3 /* ModelObject.swift in Sources */,
+				B6D70B30225F890A00738A7E /* TagViewModel.swift in Sources */,
 				B6B6B808225E4BBF0020D129 /* Tag.swift in Sources */,
 				B6E5BF13225B9B1200E54CEF /* MasterViewModel_Tests.swift in Sources */,
 				B6A114672255FDB100E78E24 /* DemoTests.swift in Sources */,

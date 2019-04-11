@@ -21,6 +21,7 @@ class ContentView1: UIView {
                 label.text = detail.text
                 imageView.image = detail.image
                 
+                self.accessibilityElements = [label]
                 setNeedsLayout()
             }
         }

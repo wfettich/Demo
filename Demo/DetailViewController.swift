@@ -59,7 +59,7 @@ extension DetailViewController : UICollectionViewDataSource, UICollectionViewDel
         }
 //        cell.containerVC = self
 //        cell.business = businesses[indexPath.row]
-//        cell.isAccessibilityElement = false
+        cell.isAccessibilityElement = false
         
         return cell;
     }
