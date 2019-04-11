@@ -43,7 +43,8 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
         tagBarVC.addTagComponentToContainerView(parentVC: self,containerView: viewTagBar)
         tagBarVC.directionHorizontal = true
         tagBarVC.delegate = self
-        tagBarVC.allNonRemovableTags = true
+//        tagBarVC.allNonRemovableTags = true
+        tagBarVC.allRemovableTags = true
         tagBarVC.tags.setDataWithoutCallingDelegate([
             Tag(name:"bar",value:"b1",category:"tagBar",selected:false,optional:false ),
             Tag(name:"cafe",value:"b2",category:"tagBar",selected:false,optional:true ),

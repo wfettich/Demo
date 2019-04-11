@@ -204,10 +204,10 @@
 			isa = PBXGroup;
 			children = (
 				B6B6B7F3225E4BB50020D129 /* TagsViewController.strings */,
+				B6B6B7FA225E4BB50020D129 /* TagsCollectionViewCell.xib */,
 				B6B6B7F5225E4BB50020D129 /* TagsCollectionViewCell.swift */,
 				B6B6B7F6225E4BB50020D129 /* Tests */,
 				B6B6B7F8225E4BB50020D129 /* TagsViewController.xib */,
-				B6B6B7FA225E4BB50020D129 /* TagsCollectionViewCell.xib */,
 				B6B6B7FB225E4BB50020D129 /* TagsViewController.swift */,
 				B6B6B7FD225E4BB50020D129 /* TagViewModel.swift */,
 				B6B6B7FE225E4BB50020D129 /* Tag.swift */,
