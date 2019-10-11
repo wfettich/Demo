@@ -64,13 +64,11 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
 //        tagBarVC.allNonRemovableTags = true
         tagBarVC.allRemovableTags = true
         tagBarVC.tags.setDataWithoutCallingDelegate([
-            Tag(name:"bar",value:"b1",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"cafe",value:"b2",category:"tagBar",selected:false,optional:true ),
-            Tag(name:"cucu",value:"b3",category:"tagBar",selected:true,optional:true ),
-            Tag(name:"baba ",value:"b4",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"mumux",value:"b5",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"gugu",value:"b6",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"tztzt",value:"b7",category:"tagBar",selected:false,optional:false )
+            t1,
+            t2,
+            t3,
+            t4,
+            t5
             ])
 
         tagBar2VC.addTagComponentToContainerView(parentVC: self,containerView: viewTagBar2)
@@ -78,13 +76,11 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
         tagBar2VC.delegate = self
         tagBar2VC.allNonRemovableTags = true
         tagBar2VC.tags.setDataWithoutCallingDelegate([
-            Tag(name:"bar",value:"b1",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"cafe",value:"b2",category:"tagBar",selected:false,optional:true ),
-            Tag(name:"cucu",value:"b3",category:"tagBar",selected:true,optional:true ),
-            Tag(name:"baba ",value:"b4",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"mumux",value:"b5",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"gugu",value:"b6",category:"tagBar",selected:false,optional:false ),
-            Tag(name:"tztzt",value:"b7",category:"tagBar",selected:false,optional:false )
+            t1,
+            t2,
+            t3,
+            t4,
+            t5
             ])
         
         // Uncomment the following line to preserve selection between presentations
@@ -92,6 +88,10 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
     }
     
     func dataSetChanged(_ tagController: TagsViewController, newDataSet: TagViewModelProtocol?)
