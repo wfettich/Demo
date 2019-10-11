@@ -35,13 +35,28 @@ class DetailContentViewController: UITableViewController, TagsCollectionViewDele
         tableView.rowHeight = UITableView.automaticDimension
         tagsVC.addTagComponentToContainerView(parentVC: self,containerView: viewTags)
         tagsVC.delegate = self
+        var t1 = Tag(name:"lalala    ",value:"1",category:"test",selected:false,optional:false )
+        t1.iconName = "icon_filter"
+        t1.isMinimized = false
+        var t2 = Tag(name:"mumu   ",value:"2",category:"test",selected:false,optional:false )
+        t2.iconName = "icon_filter"
+        t2.isMinimized = false
+        var t3 = Tag(name:"cucu  ",value:"3",category:"test",selected:true,optional:false )
+        t3.iconName = "icon_filter"
+        t3.isMinimized = false
+        var t4 = Tag(name:"baba ",value:"4",category:"test",selected:false,optional:false )
+        t4.iconName = "icon_filter"
+        t4.isMinimized = false
+        var t5 = Tag(name:"dododa",value:"5",category:"test",selected:false,optional:false )
+        t5.iconName = "icon_filter"
+        t5.isMinimized = false
         tagsVC.tags.setDataWithoutCallingDelegate([
-            Tag(name:"lalala    ",value:"1",category:"test",selected:false,optional:false ),
-            Tag(name:"mumu   ",value:"2",category:"test",selected:false,optional:true ),
-            Tag(name:"cucu  ",value:"3",category:"test",selected:true,optional:true ),
-            Tag(name:"baba ",value:"4",category:"test",selected:false,optional:false ),
-            Tag(name:"dododa",value:"5",category:"test",selected:false,optional:false )
-            ])
+            t1,
+            t2,
+            t3,
+            t4,
+            t5
+        ])
         
         tagBarVC.addTagComponentToContainerView(parentVC: self,containerView: viewTagBar)
         tagBarVC.directionHorizontal = true

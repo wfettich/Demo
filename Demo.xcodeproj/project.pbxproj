@@ -10,6 +10,12 @@
 		B609CB92225B9D92005F63A3 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A114832255FDE500E78E24 /* ModelObject.swift */; };
 		B609CB95225B9E3B005F63A3 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B609CB94225B9E3B005F63A3 /* MasterViewModel.swift */; };
 		B609CB96225B9E3B005F63A3 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B609CB94225B9E3B005F63A3 /* MasterViewModel.swift */; };
+		B61CAF51234F2B0F002F2797 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B61CAF3B234F2AFE002F2797 /* CocoaLumberjackSwift.framework */; };
+		B61CAF52234F2B0F002F2797 /* CocoaLumberjackSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B61CAF3B234F2AFE002F2797 /* CocoaLumberjackSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B61CAF5D234F2C6D002F2797 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CAF5B234F2C6D002F2797 /* UIView+Extensions.swift */; };
+		B61CAF5E234F2C6D002F2797 /* LeftAlignedCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CAF5C234F2C6D002F2797 /* LeftAlignedCollectionViewLayout.swift */; };
+		B61CAF67234F2EC5002F2797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B61CAF66234F2EC5002F2797 /* Assets.xcassets */; };
+		B6631B462342349C00F2714D /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6631B452342349C00F2714D /* DynamicHeightCollectionView.swift */; };
 		B6A114502255FDB000E78E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A1144F2255FDB000E78E24 /* AppDelegate.swift */; };
 		B6A114522255FDB000E78E24 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A114512255FDB000E78E24 /* MasterViewController.swift */; };
 		B6A114542255FDB000E78E24 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A114532255FDB000E78E24 /* DetailViewController.swift */; };
@@ -44,6 +50,118 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B61CAF30234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 18F3BFD71A81E06E00692297;
+			remoteInfo = "CocoaLumberjack-iOS-Static";
+		};
+		B61CAF32234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19FF46021B8B4CF400B43179;
+			remoteInfo = "CocoaLumberjack-iOS";
+		};
+		B61CAF34234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCB3185114EB418E001CFBEE;
+			remoteInfo = "CocoaLumberjack-macOS";
+		};
+		B61CAF36234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19D90B261BBFA9DB00947169;
+			remoteInfo = "CocoaLumberjack-tvOS";
+		};
+		B61CAF38234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19190EDE1B84D812008D059E;
+			remoteInfo = "CocoaLumberjack-watchOS";
+		};
+		B61CAF3A234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19FF460F1B8B4D1400B43179;
+			remoteInfo = "CocoaLumberjackSwift-iOS";
+		};
+		B61CAF3C234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 18F3BF0F1A81D8B700692297;
+			remoteInfo = "CocoaLumberjackSwift-macOS";
+		};
+		B61CAF3E234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19D90B351BBFAA7500947169;
+			remoteInfo = "CocoaLumberjackSwift-tvOS";
+		};
+		B61CAF40234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19190EEB1B84D826008D059E;
+			remoteInfo = "CocoaLumberjackSwift-watchOS";
+		};
+		B61CAF42234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 18F3BFF21A81E0C700692297;
+			remoteInfo = iOSLibStaticTest;
+		};
+		B61CAF44234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCB318CA14ED6C3B001CFBEE;
+			remoteInfo = FmwkTest;
+		};
+		B61CAF46234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 18F3BF5F1A81DD2E00692297;
+			remoteInfo = iOSSwiftTest;
+		};
+		B61CAF48234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55CCBEFF19BA679200957A39;
+			remoteInfo = SwiftTest;
+		};
+		B61CAF4A234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19406BE11BDBABFF001194DC;
+			remoteInfo = tvOSSwiftTest;
+		};
+		B61CAF4C234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19EC14671B84D134000EC2E7;
+			remoteInfo = watchOSSwiftTest;
+		};
+		B61CAF4E234F2AFE002F2797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19EC14731B84D134000EC2E7;
+			remoteInfo = "watchOSSwiftTest Extension";
+		};
 		B6A114632255FDB100E78E24 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B6A114442255FDB000E78E24 /* Project object */;
@@ -60,8 +178,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B61CAF53234F2B0F002F2797 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B61CAF52234F2B0F002F2797 /* CocoaLumberjackSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B609CB94225B9E3B005F63A3 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
+		B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = CocoaLumberjack/Lumberjack.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B61CAF5B234F2C6D002F2797 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		B61CAF5C234F2C6D002F2797 /* LeftAlignedCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewLayout.swift; sourceTree = "<group>"; };
+		B61CAF66234F2EC5002F2797 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B6631B452342349C00F2714D /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		B6A1144C2255FDB000E78E24 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A1144F2255FDB000E78E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6A114512255FDB000E78E24 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61CAF51234F2B0F002F2797 /* CocoaLumberjackSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +272,36 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B61CAF1E234F2AFE002F2797 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B61CAF31234F2AFE002F2797 /* libCocoaLumberjack.a */,
+				B61CAF33234F2AFE002F2797 /* CocoaLumberjack.framework */,
+				B61CAF35234F2AFE002F2797 /* CocoaLumberjack.framework */,
+				B61CAF37234F2AFE002F2797 /* CocoaLumberjack.framework */,
+				B61CAF39234F2AFE002F2797 /* CocoaLumberjack.framework */,
+				B61CAF3B234F2AFE002F2797 /* CocoaLumberjackSwift.framework */,
+				B61CAF3D234F2AFE002F2797 /* CocoaLumberjackSwift.framework */,
+				B61CAF3F234F2AFE002F2797 /* CocoaLumberjackSwift.framework */,
+				B61CAF41234F2AFE002F2797 /* CocoaLumberjackSwift.framework */,
+				B61CAF43234F2AFE002F2797 /* iOSLibStaticTest.app */,
+				B61CAF45234F2AFE002F2797 /* FmwkTest.app */,
+				B61CAF47234F2AFE002F2797 /* iOSSwiftTest.app */,
+				B61CAF49234F2AFE002F2797 /* SwiftTest.app */,
+				B61CAF4B234F2AFE002F2797 /* tvOSSwiftTest.app */,
+				B61CAF4D234F2AFE002F2797 /* watchOSSwiftTest.app */,
+				B61CAF4F234F2AFE002F2797 /* watchOSSwiftTest Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B61CAF50234F2B0F002F2797 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B6A114432255FDB000E78E24 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +309,7 @@
 				B6A114652255FDB100E78E24 /* DemoTests */,
 				B6A114702255FDB100E78E24 /* DemoUITests */,
 				B6A1144D2255FDB000E78E24 /* Products */,
+				B61CAF50234F2B0F002F2797 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +326,7 @@
 		B6A1144E2255FDB000E78E24 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */,
 				B6B6B7F2225E4BB50020D129 /* TagComponent */,
 				B609CB93225B9E09005F63A3 /* ViewModel */,
 				B6A1144F2255FDB000E78E24 /* AppDelegate.swift */,
@@ -204,6 +374,9 @@
 		B6B6B7F2225E4BB50020D129 /* TagComponent */ = {
 			isa = PBXGroup;
 			children = (
+				B61CAF5C234F2C6D002F2797 /* LeftAlignedCollectionViewLayout.swift */,
+				B61CAF5B234F2C6D002F2797 /* UIView+Extensions.swift */,
+				B6631B452342349C00F2714D /* DynamicHeightCollectionView.swift */,
 				B6B6B7F3225E4BB50020D129 /* TagsViewController.strings */,
 				B6B6B7FA225E4BB50020D129 /* TagsCollectionViewCell.xib */,
 				B6B6B7F5225E4BB50020D129 /* TagsCollectionViewCell.swift */,
@@ -212,6 +385,7 @@
 				B6B6B7FB225E4BB50020D129 /* TagsViewController.swift */,
 				B6B6B7FD225E4BB50020D129 /* TagViewModel.swift */,
 				B6B6B7FE225E4BB50020D129 /* Tag.swift */,
+				B61CAF66234F2EC5002F2797 /* Assets.xcassets */,
 			);
 			path = TagComponent;
 			sourceTree = SOURCE_ROOT;
@@ -234,6 +408,7 @@
 				B6A114482255FDB000E78E24 /* Sources */,
 				B6A114492255FDB000E78E24 /* Frameworks */,
 				B6A1144A2255FDB000E78E24 /* Resources */,
+				B61CAF53234F2B0F002F2797 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,6 +492,12 @@
 			mainGroup = B6A114432255FDB000E78E24;
 			productRefGroup = B6A1144D2255FDB000E78E24 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B61CAF1E234F2AFE002F2797 /* Products */;
+					ProjectRef = B61CAF1D234F2AFE002F2797 /* Lumberjack.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B6A1144B2255FDB000E78E24 /* Demo */,
@@ -325,6 +506,121 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B61CAF31234F2AFE002F2797 /* libCocoaLumberjack.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocoaLumberjack.a;
+			remoteRef = B61CAF30234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF33234F2AFE002F2797 /* CocoaLumberjack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjack.framework;
+			remoteRef = B61CAF32234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF35234F2AFE002F2797 /* CocoaLumberjack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjack.framework;
+			remoteRef = B61CAF34234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF37234F2AFE002F2797 /* CocoaLumberjack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjack.framework;
+			remoteRef = B61CAF36234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF39234F2AFE002F2797 /* CocoaLumberjack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjack.framework;
+			remoteRef = B61CAF38234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF3B234F2AFE002F2797 /* CocoaLumberjackSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjackSwift.framework;
+			remoteRef = B61CAF3A234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF3D234F2AFE002F2797 /* CocoaLumberjackSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjackSwift.framework;
+			remoteRef = B61CAF3C234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF3F234F2AFE002F2797 /* CocoaLumberjackSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjackSwift.framework;
+			remoteRef = B61CAF3E234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF41234F2AFE002F2797 /* CocoaLumberjackSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaLumberjackSwift.framework;
+			remoteRef = B61CAF40234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF43234F2AFE002F2797 /* iOSLibStaticTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iOSLibStaticTest.app;
+			remoteRef = B61CAF42234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF45234F2AFE002F2797 /* FmwkTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = FmwkTest.app;
+			remoteRef = B61CAF44234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF47234F2AFE002F2797 /* iOSSwiftTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iOSSwiftTest.app;
+			remoteRef = B61CAF46234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF49234F2AFE002F2797 /* SwiftTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SwiftTest.app;
+			remoteRef = B61CAF48234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF4B234F2AFE002F2797 /* tvOSSwiftTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = tvOSSwiftTest.app;
+			remoteRef = B61CAF4A234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF4D234F2AFE002F2797 /* watchOSSwiftTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = watchOSSwiftTest.app;
+			remoteRef = B61CAF4C234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B61CAF4F234F2AFE002F2797 /* watchOSSwiftTest Extension.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = "watchOSSwiftTest Extension.appex";
+			remoteRef = B61CAF4E234F2AFE002F2797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B6A1144A2255FDB000E78E24 /* Resources */ = {
@@ -341,6 +637,7 @@
 				B6A114E0225758D700E78E24 /* ContentView1.xib in Resources */,
 				B6A114882255FED600E78E24 /* MasterTableViewCell.xib in Resources */,
 				B6B6B800225E4BB50020D129 /* TagsViewController.strings in Resources */,
+				B61CAF67234F2EC5002F2797 /* Assets.xcassets in Resources */,
 				B6A114D8225655C500E78E24 /* ImageAndTextView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,8 +666,10 @@
 				B6B6B807225E4BB50020D129 /* Tag.swift in Sources */,
 				B6A114542255FDB000E78E24 /* DetailViewController.swift in Sources */,
 				B6B6B801225E4BB50020D129 /* TagsCollectionViewCell.swift in Sources */,
+				B6631B462342349C00F2714D /* DynamicHeightCollectionView.swift in Sources */,
 				B6A114872255FED600E78E24 /* MasterTableViewCell.swift in Sources */,
 				B6A114522255FDB000E78E24 /* MasterViewController.swift in Sources */,
+				B61CAF5D234F2C6D002F2797 /* UIView+Extensions.swift in Sources */,
 				B6A114D42256527C00E78E24 /* ScaledHeightImageView.swift in Sources */,
 				B6B6B806225E4BB50020D129 /* TagViewModel.swift in Sources */,
 				B6A114502255FDB000E78E24 /* AppDelegate.swift in Sources */,
@@ -378,6 +677,7 @@
 				B6A114EA225772D200E78E24 /* DetailContentViewController.swift in Sources */,
 				B609CB95225B9E3B005F63A3 /* MasterViewModel.swift in Sources */,
 				B6A114D7225655AD00E78E24 /* ImageAndTextView.swift in Sources */,
+				B61CAF5E234F2C6D002F2797 /* LeftAlignedCollectionViewLayout.swift in Sources */,
 				B6B6B805225E4BB50020D129 /* TagsViewController.swift in Sources */,
 				B6A114E82257723000E78E24 /* ContentView1.swift in Sources */,
 				B6A114E3225759DA00E78E24 /* DetailCollectionViewCell.swift in Sources */,
